@@ -1,4 +1,5 @@
 const sequelizeAgendamento = require('../models/SequelizeAgendamentos');
+const moment = require('moment');
 
 class Agendamento {
     constructor({id, nome_cliente, nome_servico, status, data_agendamento, 
@@ -37,13 +38,25 @@ class Agendamento {
 
     validar() {
         const camposObrigatorios = ['nome_cliente', 'nome_servico', 'status', 'data_agendamento']
+        const hoje = moment().format('YYYY-MM-DD');
 
         camposObrigatorios.forEach((campo)=>{
             const valor = this[campo];
             if(typeof valor !== 'string' || valor.length === 0) {
                 throw new Error('Campo inválido')
             }
+            if(campo == 'data_agendamento' && !moment(valor).isSameOrAfter(hoje)) {
+                throw new Error('Data inválida');
+            }
         });
+    };
+
+    async remover() {
+        const result = await sequelizeAgendamento.remover(this.id);
+
+        if(result == 0){
+            throw new Error('Agendamento inexistente');
+        }
     }
 };
 
