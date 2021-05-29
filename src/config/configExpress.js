@@ -33,6 +33,19 @@ module.exports = () => {
            resp.getHeader('Content-Type') 
         );
 
+        if(error instanceof NaoEncontrado) {
+            status = 404;
+        };
+
+        if(error instanceof CampoInvalido || error instanceof CampoQtdMaxima 
+            || error instanceof CampoQtdMinima) {
+            status = 400;
+        };
+
+        if(error instanceof FormatoInvalido) {
+            status = 406;
+        };
+
         resp.status(status).send(
             serializarErro.transformar({
                 id: error.idError,
