@@ -1,5 +1,6 @@
 const Agendamento = require('./Agendamento');
 const SequelizeAgendamentos = require('../models/SequelizeAgendamentos');
+const SerializarAgendamento = require('../shared/Serializar').SerializarAgendamento;
 
 module.exports = {
     carregarTodosAgendamentos: async(req, resp) => {
@@ -11,14 +12,17 @@ module.exports = {
         }
     },
 
-    carregarAgendamento: async(req, resp) => {
+    carregarAgendamento: async(req, resp, next) => {
         try {
             const id = req.params.id;
             const agendamento = new Agendamento({id: id});
             await agendamento.buscar();
-            resp.status(201).send(JSON.stringify(agendamento))
+            const serializador = new SerializarAgendamento(
+               resp.getHeader('Content-Type') 
+            )
+            resp.status(201).send(serializador.transformar(agendamento))
         } catch (error) {
-            resp.status(401).send(JSON.stringify({error: error.message}))
+            next(error)
         }
     },
 
