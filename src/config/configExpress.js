@@ -1,7 +1,12 @@
 const express = require('express');
-const routesAgendamento = require('../api');
+const routesAgendamento = require('../api/agendamentos');
 const FormatosValidos = require('../shared/Serializar').FormatosValidos;
 const SerializarErro = require('../shared/Serializar').SerializarErro;
+const NaoEncontrado = require('../errors/NaoEncontrado');
+const CampoInvalido = require('../errors/CampoInvalido');
+const CampoQtdMaxima = require('../errors/CampoQtdMaxima');
+const CampoQtdMinima = require('../errors/CampoQtdMinima');
+const FormatoInvalido = require('../errors/FormatoInvalido');
 
 module.exports = () => {
     const app = express();

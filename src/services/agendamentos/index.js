@@ -1,13 +1,14 @@
 const Agendamento = require('./Agendamento');
-const SequelizeAgendamentos = require('../models/SequelizeAgendamentos');
-const SerializarAgendamento = require('../shared/Serializar').SerializarAgendamento;
+const SequelizeAgendamentos = require('../../models/agendamentos/SequelizeAgendamentos');
+const SerializarAgendamento = require('../../shared/Serializar').SerializarAgendamento;
 
 module.exports = {
     carregarTodosAgendamentos: async(req, resp, next) => {
         try {
             const results = await SequelizeAgendamentos.listar();
             const serializador = new SerializarAgendamento(
-                resp.getHeader('Content-Type')
+                resp.getHeader('Content-Type'),
+                ['status']
             );
             resp.status(201).send(serializador.transformar(results));
         } catch (error) {
