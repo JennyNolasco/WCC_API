@@ -4,7 +4,9 @@ const TabelaUsuario = require('./TabelaUsuario');
 module.exports = {
     async listar() {
         try {
-            results = await TabelaUsuario.findAll({});
+            results = await TabelaUsuario.findAll({
+                raw: true,
+            });
             return results;
         } catch (error) {
             throw error
@@ -71,7 +73,7 @@ module.exports = {
 
     async remover(id) {
         try {
-            result = await TabelaUsuario.remove(
+            result = await TabelaUsuario.destroy(
                 {
                     where: {
                         id:id
@@ -79,6 +81,9 @@ module.exports = {
                 }
             );
 
+            if(result === 0) {
+                throw new NaoEncontrado('Usuário');
+            }
             return result
         } catch (error) {
             throw error

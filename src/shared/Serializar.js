@@ -79,11 +79,24 @@ class SerializarErro extends Serializar {
         this.tag = 'Error';
         this.tagList = 'Errors';
     }
+};
+
+class SerializarUsuario extends Serializar {
+    constructor(contentType, camposPersonalizados) {
+        super();
+        this.contentType = contentType;
+        this.camposPermitidos = [
+            'id', 'nome', 'email'
+        ].concat(camposPersonalizados || []);
+        this.tag = 'Usuário';
+        this.tagList = 'Usuários';
+    }
 }
 
 module.exports = {
     Serializar: Serializar,
     SerializarAgendamento: SerializarAgendamento,
     SerializarErro: SerializarErro,
+    SerializarUsuario: SerializarUsuario,
     FormatosValidos: ['application/json', 'application/xml']
 }
