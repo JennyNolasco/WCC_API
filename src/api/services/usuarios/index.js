@@ -1,6 +1,6 @@
 const Usuario = require('./Usuario');
-const SequelizeUsuario = require('../../models/usuarios/SequelizeUsuario');
-const SerializarUsuario = require('../../shared/Serializar').SerializarUsuario;
+const SequelizeUsuario = require('../../repositories/usuariosSequelize');
+const SerializarUsuario = require('../../../shared/Serializar').SerializarUsuario;
 
 module.exports = {
     delete: async (req, resp, next) => {

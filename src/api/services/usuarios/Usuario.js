@@ -2,7 +2,7 @@ const CampoInvalido = require('../../errors/CampoInvalido');
 const CampoQtdMaxima = require('../../errors/CampoQtdMaxima');
 const CampoQtdMinima = require('../../errors/CampoQtdMinima');
 const DadosNaoInformados = require('../../errors/DadosNaoInformados');
-const SequelizeUsuario = require('../../models/usuarios/SequelizeUsuario');
+const SequelizeUsuario = require('../../repositories/usuariosSequelize');
 const bcrypt = require('bcrypt');
 
 class Usuario {

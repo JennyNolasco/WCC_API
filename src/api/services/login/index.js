@@ -1,4 +1,4 @@
-const criarToken = require('../../shared/gerarToken');
+const criarToken = require('../../../shared/gerarToken');
 
 module.exports = {
     login: (req, resp) => {

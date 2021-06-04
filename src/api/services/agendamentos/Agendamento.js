@@ -1,4 +1,4 @@
-const sequelizeAgendamento = require('../../models/agendamentos/SequelizeAgendamentos');
+const sequelizeAgendamento = require('../../repositories/agendamentosSequelize');
 const moment = require('moment');
 const CampoInvalido = require('../../errors/CampoInvalido');
 const NaoEncontrado = require('../../errors/NaoEncontrado');

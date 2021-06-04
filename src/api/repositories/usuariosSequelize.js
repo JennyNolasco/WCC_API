@@ -1,5 +1,5 @@
-const NaoEncontrado = require('../../errors/NaoEncontrado');
-const TabelaUsuario = require('./TabelaUsuario');
+const NaoEncontrado = require('../errors/NaoEncontrado');
+const TabelaUsuario = require('../models/TabelaUsuario');
 
 module.exports = {
     async listar() {

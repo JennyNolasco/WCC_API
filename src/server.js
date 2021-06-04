@@ -1,6 +1,6 @@
-const configExpress = require('./config/configExpress');
+const configExpress = require('./api/config/configExpress');
 const config = require('config');
-const instanciadb = require('./db');
+const instanciadb = require('./api/db');
 require('dotenv').config();
 
 (async () => {

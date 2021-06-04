@@ -1,5 +1,5 @@
-const TabelaAgendamento = require('./TabelaAgendamento');
-const NaoEncontrado = require('../../errors/NaoEncontrado');
+const TabelaAgendamento = require('../models/TabelaAgendamento');
+const NaoEncontrado = require('../errors/NaoEncontrado');
 
 module.exports = {
     async listar() {

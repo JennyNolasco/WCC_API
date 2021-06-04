@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const servicoUsuario = require('../../services/usuarios');
+const servicoUsuario = require('../services/usuarios');
 const passport = require('passport');
 
 router.get('/usuarios',

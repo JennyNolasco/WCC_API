@@ -1,12 +1,12 @@
 const express = require('express');
-const routesAgendamento = require('../api/agendamentos');
-const routesUsuario = require('../api/usuarios');
-const routesLogin = require('../api/login');
+const routesAgendamento = require('../controllers/agendamentos');
+const routesUsuario = require('../controllers/usuarios');
+const routesLogin = require('../controllers/login');
 const FormatoInvalido = require('../errors/FormatoInvalido');
-const FormatosValidos = require('../shared/Serializar').FormatosValidos;
+const FormatosValidos = require('../../shared/Serializar').FormatosValidos;
 const NaoEncontrado = require('../errors/NaoEncontrado');
 const CampoInvalido = require('../errors/CampoInvalido');
-const SerializarError = require('../shared/Serializar').SerializarErro;
+const SerializarError = require('../../shared/Serializar').SerializarErro;
 const DadosNaoInformados = require('../errors/DadosNaoInformados');
 const passport = require('./autenticacao');
 
